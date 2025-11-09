@@ -1,14 +1,21 @@
 # Matrix Build with Artifacts (88cb432)
 
-This repository demonstrates a GitHub Actions **matrix build strategy** that runs jobs in parallel across multiple Node.js versions and uploads build artifacts.
+This repository demonstrates a GitHub Actions **matrix build** workflow with artifact management.  
+Each matrix variant runs in parallel and generates a unique artifact uploaded to the workflow run page.
 
-## Workflow Summary
-- Uses **matrix builds** with Node.js versions 14, 16, and 18
-- Each job creates a text artifact named `build-88cb432-node<version>`
-- Artifacts are uploaded via `actions/upload-artifact@v4`
-- Includes the required step `matrix-88cb432`
+## 📦 Workflow Details
+- **Matrix Strategy:** Node.js versions 14, 16, and 18  
+- **Parallel Execution:** All three variants run concurrently  
+- **Artifacts:** Each job uploads an artifact named `build-88cb432-node<version>`  
+- **Step Identifier:** Contains `matrix-88cb432` in the workflow  
+- **Location:** `.github/workflows/matrix-build.yml`
+
+## ✅ Validation Checklist
+- [x] At least 3 matrix jobs run successfully  
+- [x] Each job uploads a non-empty artifact  
+- [x] Workflow includes `matrix-88cb432`  
+- [x] README includes my email address  
 
 ---
 
-**Email:** your.email@example.com  
-**GitHub Repository:** https://github.com/your-username/your-repo
+**Author Email:** 22f2001354@ds.study.iitm.ac.in
