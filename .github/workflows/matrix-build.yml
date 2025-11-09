@@ -10,12 +10,13 @@ jobs:
     name: Matrix Build (88cb432)
     runs-on: ubuntu-latest
 
+    # ✅ Define matrix properly so GitHub runs 3 jobs in parallel
     strategy:
       matrix:
         node-version: [14, 16, 18]
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: matrix-88cb432
@@ -28,13 +29,14 @@ jobs:
 
       - name: Generate build artifact
         run: |
-          mkdir -p artifacts
-          echo "✅ Build output for Node.js version ${{ matrix.node-version }}" > artifacts/output-${{ matrix.node-version }}.txt
-          echo "Timestamp: $(date)" >> artifacts/output-${{ matrix.node-version }}.txt
-          echo "Node version: ${{ matrix.node-version }}" >> artifacts/output-${{ matrix.node-version }}.txt
+          mkdir -p build
+          echo "✅ Build artifact for Node.js version ${{ matrix.node-version }}" > build/output-${{ matrix.node-version }}.txt
+          echo "Generated on: $(date)" >> build/output-${{ matrix.node-version }}.txt
+          echo "Matrix variant: ${{ matrix.node-version }}" >> build/output-${{ matrix.node-version }}.txt
+          cat build/output-${{ matrix.node-version }}.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-88cb432-node${{ matrix.node-version }}
-          path: artifacts/output-${{ matrix.node-version }}.txt
+          path: build/output-${{ matrix.node-version }}.txt
