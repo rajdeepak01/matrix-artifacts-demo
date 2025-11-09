@@ -32,7 +32,6 @@ jobs:
           echo "✅ Build output for Node.js version ${{ matrix.node-version }}" > artifacts/output-${{ matrix.node-version }}.txt
           echo "Timestamp: $(date)" >> artifacts/output-${{ matrix.node-version }}.txt
           echo "Node version: ${{ matrix.node-version }}" >> artifacts/output-${{ matrix.node-version }}.txt
-          cat artifacts/output-${{ matrix.node-version }}.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
