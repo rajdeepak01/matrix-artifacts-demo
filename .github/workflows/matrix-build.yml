@@ -8,12 +8,12 @@ on:
 jobs:
   build:
     name: Matrix Build (88cb432)
+    # ⚡ Each matrix job runs in parallel
     runs-on: ubuntu-latest
 
-    # ✅ Define matrix properly so GitHub runs 3 jobs in parallel
     strategy:
       matrix:
-        node-version: [14, 16, 18]
+        node-version: [14, 16, 18]  # ✅ 3 variants
 
     steps:
       - name: Checkout repository
@@ -30,8 +30,8 @@ jobs:
       - name: Generate build artifact
         run: |
           mkdir -p build
-          echo "✅ Build artifact for Node.js version ${{ matrix.node-version }}" > build/output-${{ matrix.node-version }}.txt
-          echo "Generated on: $(date)" >> build/output-${{ matrix.node-version }}.txt
+          echo "✅ Build for Node.js version ${{ matrix.node-version }}" > build/output-${{ matrix.node-version }}.txt
+          echo "Generated on $(date)" >> build/output-${{ matrix.node-version }}.txt
           echo "Matrix variant: ${{ matrix.node-version }}" >> build/output-${{ matrix.node-version }}.txt
           cat build/output-${{ matrix.node-version }}.txt
 
